@@ -1,0 +1,38 @@
+﻿@model Profile
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<h1>Confirmation</h1>
+<br /><br />
+
+<table width="80%" style="align-content:center">
+    <tbody>
+        <tr>
+            <td style="text-align: right">First Name Entered</td>
+            <td style="text-align: center"> :: </td>
+            <td style="text-align: left">@Model.firstname</td>
+        </tr>
+        <tr>
+            <td style="text-align: right">Last Name Entered</td>
+            <td style="text-align: center"> :: </td>
+            <td style="text-align: left">@Model.lastname</td>
+        </tr>
+        <tr>
+            <td style="text-align: right">Email Entered</td>
+            <td style="text-align: center"> :: </td>
+            <td style="text-align: left">@Model.email</td>
+        </tr>
+        <tr>
+            <td style="text-align: right">Password Entered</td>
+            <td style="text-align: center"> :: </td>
+            <td style="text-align: left">@Model.password</td>
+        </tr>
+        <tr>
+            <td style="text-align: right">Password Confirmation Entered</td>
+            <td style="text-align: center"> :: </td>
+            <td style="text-align: left">@Model.confirm</td>
+        </tr>
+    </tbody>
+</table>
+

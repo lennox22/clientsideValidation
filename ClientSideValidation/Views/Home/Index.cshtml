@@ -1,8 +1,136 @@
-﻿@{
+﻿<script>
+    function validate() {
+        let FNmessage = document.getElementById('FNmessage');
+        let LNmessage = document.getElementById('LNmessage');
+        let Emailmessage = document.getElementById('Emailmessage');
+        let Passmessage = document.getElementById('Passmessage');
+        let Confmessage = document.getElementById('Confmessage');
+        let cont = true;
+
+        let firstname = document.getElementById('firstname');
+        if (!isNaN(firstname.value) || firstname.value.length < 2) {
+            FNmessage.innerHTML = 'First Name must be at least 2 letters long and not contain numbers.';
+            cont = false;
+        }
+        else {
+            FNmessage.innerHTML = '';
+        }
+
+        let lastname = document.getElementById('lastname');
+        if (!isNaN(lastname.value) || lastname.value.length < 2) {
+            LNmessage.innerHTML = 'Last Name must be at least 2 letters long and not contain numbers.';
+            cont = false;
+        }
+        else {
+            LNmessage.innerHTML = '';
+        }
+
+        let email = document.getElementById('email');
+        if (email.value.match(/^(.{2,})@@(.{2,})\.(.{2,})$/)) {
+            Emailmessage.innerHTML = '';
+        }
+        else {
+            Emailmessage.innerHTML = 'Please enter a valid email address.';
+            cont = false;
+        }
+
+        let password = document.getElementById('password');
+        if (password.value.match(/[A-Z]/g) && password.value.match(/[a-z]/g) && password.value.match(/\d/g) && password.value.match(/[$-/:-?{-~!"^_`\[\]]/g)) {
+            Passmessage.innerHTML = '';
+        }
+        else {
+            Passmessage.innerHTML = 'Password must have at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 symbol.';
+            cont = false;
+        }
+
+        let confirm = document.getElementById('confirm');
+        if (confirm.value != password.value) {
+            Confmessage.innerHTML = 'Confirmation password must match the password exactly.';
+            cont = false;
+        }
+        else {
+            Confmessage.innerHTML = '';
+        }
+
+        return cont;
+    }
+
+
+
+
+</script>
+
+
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Fill This Out For No Reason! #FTOFNR</h1>
 </div>
+<br />
+<br />
+<form onsubmit="return validate()" method="post" action="/home/confirmation">
+    <input type="submit" value="Pointless Entry" style="width: 200px; margin: 0 auto;" />
+    <table width="100%" style="align-content:center">
+        <tbody>
+            <tr>
+                <td style="text-align: right">
+                    First Name
+                </td>
+                <td style="text-align: center"> :: </td>
+                <td style="text-align: left">
+                    <input type="text" name="firstname" id="firstname" />
+                    <span style="color:red; font:bolder" id="FNmessage"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">
+                    Last Name
+                </td>
+                <td style="text-align: center"> :: </td>
+
+                <td style="text-align: left">
+                    <input type="text" name="lastname" id="lastname" />
+                    <span style="color:red; font:bolder" id="LNmessage"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">
+                    Email
+                </td>
+                <td style="text-align: center"> :: </td>
+
+                <td style="text-align: left">
+                    <input type="text" name="email" id="email" />
+                    <span style="color:red; font:bolder" id="Emailmessage"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">
+                    Password
+                </td>
+                <td style="text-align: center"> :: </td>
+
+                <td style="text-align: left">
+                    <input type="text" name="password" id="password" />
+                    <span style="color:red; font:bolder" id="Passmessage"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">
+                    Confirm Password
+                </td>
+                <td style="text-align: center"> :: </td>
+
+                <td style="text-align: left">
+                    <input type="text" name="confirm" id="confirm" />
+                    <span style="color:red; font:bolder" id="Confmessage"></span>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</form>

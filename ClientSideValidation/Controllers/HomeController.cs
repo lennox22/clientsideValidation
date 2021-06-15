@@ -22,6 +22,11 @@ namespace ClientSideValidation.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Confirmation(Profile prof)
+        {
+            return View(prof);
+        }
 
         public IActionResult Privacy()
         {
